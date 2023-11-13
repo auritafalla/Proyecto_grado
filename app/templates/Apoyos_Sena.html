@@ -1,0 +1,415 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style_apoyos.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+  <title>Apoyos y Monitorias</title>
+</head>
+<body>
+    <!--Sección Header de la Página-->
+    <header>
+        <nav>
+          <input type="checkbox" id="toggle">
+          <!--Logo del sena -->
+          <div class="logo">
+              <img src="{% static 'img/icon.png' %}" alt="icon">
+          </div>
+          <!--hipervinculos-->
+          <ul class="list">
+              <li><a href="{% url 'index' %}">Inicio</a></li>
+              <li><a href="{% url 'apoyos' %}" class="activate">Apoyos</a></li>
+              <li><a href="{% url 'liderazgo' %}">Liderazgo</a></li>
+              <li><a href="{% url 'arte_cultura' %}">Arte y cultura</a></li>
+              <li><a href="{% url 'psicosocial' %}">Psicosocial</a></li>
+              <li><a href="{% url 'deportes' %}">Deportes</a></li>
+              <li><a href="{% url 'enfermeria' %}">Enfermería</a></li>
+              <li><a href="{% url 'login' %}">Ingresar</a></li>
+          </ul>
+          <!--Menu hamburguesa responsive-->
+          <label for="toggle" class="icon-bars">
+              <div class="line"></div>   
+              <div class="line"></div> 
+              <div class="line"></div>          
+          </label>
+      </nav>
+      <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+          var nav = document.querySelector("nav");
+          nav.classList.toggle("abajo", window.scrollY > 0);
+        })
+      </script>
+      </header>
+
+    <!-- Sección Panel Publicitario-->
+    <center>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="{%static 'img_apoyo/apoyoa.jpeg'%}" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'img_apoyo/apoyosr.png'%}" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'img_apoyo/apoyot.png'%}" alt="Imagen 3">
+                </div>
+            </div>
+            <div class="controls">
+                <div class="circle-button" id="prev">&#8249;</div>
+                <div class="circle-button" id="next">&#8250;</div>
+            </div>
+        </div>
+    </center>
+
+    <!--Sección Preguntas frecuentes-->
+    <br><br><br>
+    <h2 class="preguntash2">Preguntas frecuentes</h2>
+    <div class="conta">
+        <img src="{%static 'img_apoyo/chica.png'%}" alt="Imagen" class="imagen" />
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-item-header">
+                    ¿Que tipos de apoyos ofrece el sena?
+                </div>
+                <div class="accordion-item-body">
+                    <div class="accordion-item-body-content">
+                        El SENA ofrece una asignación económica a los aprendices que participan en programas de
+                        formación. Esta asignación busca ayudar a cubrir los gastos relacionados con el transporte,
+                        alimentación y otros costos necesarios para que los aprendices puedan asistir a sus clases y
+                        prácticas
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-item-header">
+                    ¿Cuando y cómo se entregan estos beneficios?
+                </div>
+                <div class="accordion-item-body">
+                    <div class="accordion-item-body-content">
+                        En general, los apoyos de sostenimiento en el Servicio Nacional de Aprendizaje (SENA) en
+                        Colombia se entregan a los aprendices inscritos en programas de formación para ayudarles a
+                        cubrir los gastos relacionados con su educación y formación. Estos apoyos suelen incluir una
+                        asignación económica mensual, así como posibles beneficios adicionales como transporte,
+                        alimentación y, en casos especiales, apoyo para la vivienda. La entrega de estos beneficios
+                        sigue un calendario establecido por el SENA y se realiza generalmente de manera directa a los
+                        aprendices, ya sea mediante depósito bancario, tarjetas de débito o vales de comida, según
+                        corresponda.
+                        <br>
+                        Es importante que los aprendices estén atentos a las comunicaciones y orientaciones
+                        proporcionadas por su centro de formación del SENA para conocer los detalles específicos sobre
+                        cómo y cuándo se entregarán estos apoyos de sostenimiento, ya que pueden variar según la región
+                        y el programa de formación. Además, el SENA puede ofrecer orientación y asesoramiento adicional
+                        sobre cómo administrar adecuadamente estos recursos financieros para garantizar un uso efectivo
+                        durante su proceso de formación.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-item-header">
+                    ¿Cómo solicitar un apoyo del sena?
+                </div>
+                <div class="accordion-item-body">
+                    <div class="accordion-item-body-content">
+                        Para solicitar un apoyo del SENA, inscríbete en un programa de formación del SENA y comunícate
+                        con tu centro de formación para obtener información sobre los apoyos disponibles y los
+                        requisitos de solicitud.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-item-header">
+                    ¿Puedo recibir más de un tipo de apoyo a la vez?
+                </div>
+                <div class="accordion-item-body">
+                    <div class="accordion-item-body-content">
+                        <ul style="padding-left: 1rem">
+                            Sí, en algunos casos es posible recibir más de un tipo de apoyo del SENA al mismo tiempo,
+                            dependiendo de tu situación y de los programas disponibles en tu región. Por ejemplo,
+                            podrías recibir una asignación económica mensual junto con apoyo para el transporte o la
+                            alimentación, especialmente si cumples con los requisitos establecidos para cada tipo de
+                            apoyo. Sin embargo, las políticas y la disponibilidad de estos apoyos pueden variar según tu
+                            ubicación y el programa de formación en el que estás inscrito, por lo que es importante
+                            consultar directamente con tu centro de formación del SENA para obtener información
+                            específica sobre los apoyos que podrías ser elegible para recibir.
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <!-- Sección Requisitos para los apoyos-->
+    <section class="accordion">
+        <h1>Requisitos para los apoyos de Sostenimiento</h1>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>FIC</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Ser mayor de edad.</li>
+                    <li>Haber completado la educación básica.</li>
+                    <li>Estar inscrito en un programa de formación en el SENA.</li>
+                    <li>Cumplir con los requisitos de selección del programa.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>Sostenimiento Regular</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Estar en estado "En formación".</li>
+                    <li>Inscribirse en las fechas establecidas.</li>
+                    <li>Estar matriculado en un programa de formación técnico o tecnólogo.</li>
+                    <li>Entregar la documentación completa requerida.</li>
+                    <li>Realizar la inscripción en el link que se les otorgue.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>Transporte</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Estar en estado "Inducción" o "En Formación" en etapa lectiva o práctica en el aplicativo Sofia
+                        Plus</li>
+                    <li>No tener condicionamiento de matrícula conforme a lo estipulado en el reglamento del aprendiz
+                    </li>
+                    <li>No ser beneficiario de ningún otro apoyo de sostenimiento</li>
+                    <li>Diligenciar adecuadamente el formato de registro socioeconómico.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>Alimentación</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Encontrarse activo en Formación</li>
+                    <li>No tener condicionamiento de matrícula conforme a lo estipulado en el reglamento del aprendiz
+                    </li>
+                    <li>No ser beneficiario de apoyo de Sostenimiento Regular o FIC</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>Plan de Datos</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Estar en estado "Inducción" o "En Formación" en etapa lectiva o práctica en el aplicativo Sofia
+                        Plus</li>
+                    <li>No tener condicionamiento de matrícula conforme a lo estipulado en el reglamento del aprendiz
+                    </li>
+                    <li>No ser beneficiario de ningún otro apoyo de sostenimiento</li>
+                    <li>Diligenciar adecuadamente el formato de registro socioeconómico.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h2>Monitorías</h2>
+                <span>&#9660;</span>
+            </div>
+            <div class="accordion-contenido">
+                <ul>
+                    <li>Ser aprendiz o haber culminado satisfactoriamente un programa de formación en el SENA</li>
+                    <li>Tener un buen desempeño académico y/o técnico en el programa de formación correspondiente
+                    </li>
+                    <li>Contar con habilidades y competencias técnicas relacionadas con el área de conocimiento en
+                        la que se va a desempeñar como monitor</li>
+                    <li>Disponibilidad de tiempo para cumplir con las responsabilidades asignadas como monitor</li>
+                    <li>No tener sanciones disciplinarias o académicas pendientes en el SENA</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br><br>
+    <!-- Sección Aprendices seleccionados-->
+    <h2 class="noticiash2">Noticias</h2>
+    <div class="modal">
+        <article class="modal-container">
+            <head class="modal-container-header">
+                <span class="modal-container-title">
+                    <img src="{% static 'img/icon.png' %}" alt="">
+                    Noticias y actualizaciones
+                </span>
+            </head>
+            <section class="modal-container-body rtf">
+                <span>Quarum ambarum rerum cum medicinam pollicetur, luxuriae licentiam pollicetur.</span>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus
+                    sit, finitas cupiditates habere. Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et
+                    quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. Paulum, cum regem Persem
+                    captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid
+                    sit effectum? Duo Reges: constructio interrete. </p>
+
+                <span>Ut proverbia non nulla veriora sint quam vestra dogmata.</span>
+
+                <p>Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Tria genera
+                    cupiditatum, naturales et necessariae, naturales et non necessariae, nec naturales nec necessariae.
+                    Sin aliud quid voles, postea. Consequatur summas voluptates non modo parvo, sed per me nihilo, si
+                    potest; </p>
+
+                <p>Cur igitur easdem res, inquam, Peripateticis dicentibus verbum nullum est, quod non intellegatur?
+                    Primum in nostrane potestate est, quid meminerimus? Eam tum adesse, cum dolor omnis absit; Quodsi
+                    ipsam honestatem undique pertectam atque absolutam. Aliam vero vim voluptatis esse, aliam nihil
+                    dolendi, nisi valde pertinax fueris, concedas necesse est. Nec enim, cum tua causa cui commodes,
+                    beneficium illud habendum est, sed faeneratio, nec gratia deberi videtur ei, qui sua causa
+                    commodaverit. Universa enim illorum ratione cum tota vestra confligendum puto. Sed residamus,
+                    inquit, si placet. Sed vobis voluptatum perceptarum recordatio vitam beatam facit, et quidem corpore
+                    perceptarum. Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates
+                    fieri propter voluptatem; Ita enim se Athenis collocavit, ut sit paene unus ex Atticis, ut id etiam
+                    cognomen videatur habiturus. Atque hoc loco similitudines eas, quibus illi uti solent, dissimillimas
+                    proferebas. </p>
+
+                <span>An hoc usque quaque, aliter in vita?</span>
+                <ol>
+                    <li>Etenim nec iustitia nec amicitia esse omnino poterunt, nisi ipsae per se expetuntur.</li>
+                    <li>Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q.</li>
+                    <li>Certe nihil nisi quod possit ipsum propter se iure laudari.</li>
+                    <li>Itaque e contrario moderati aequabilesque habitus, affectiones ususque corporis apti esse ad
+                        naturam videntur.</li>
+                </ol>
+
+                <p>Utilitatis causa amicitia est quaesita. Qui autem de summo bono dissentit de tota philosophiae
+                    ratione dissentit. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Sed
+                    emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Hoc positum
+                    in Phaedro a Platone probavit Epicurus sensitque in omni disputatione id fieri oportere. Potius
+                    inflammat, ut coercendi magis quam dedocendi esse videantur. Roges enim Aristonem, bonane ei
+                    videantur haec: vacuitas doloris, divitiae, valitudo; Totum autem id externum est, et quod externum,
+                    id in casu est. Non autem hoc: igitur ne illud quidem. Simul atque natum animal est, gaudet
+                    voluptate et eam appetit ut bonum, aspernatur dolorem ut malum. Quamquam tu hanc copiosiorem etiam
+                    soles dicere. Quid enim necesse est, tamquam meretricem in matronarum coetum, sic voluptatem in
+                    virtutum concilium adducere? Hoc positum in Phaedro a Platone probavit Epicurus sensitque in omni
+                    disputatione id fieri oportere. Videsne quam sit magna dissensio? </p>
+
+                <span>Claudii libidini, qui tum erat summo ne imperio, dederetur.</span>
+
+                <p>Eorum enim est haec querela, qui sibi cari sunt seseque diligunt. Cum audissem Antiochum, Brute, ut
+                    solebam, cum M. An obliviscimur, quantopere in audiendo in legendoque moveamur, cum pie, cum amice,
+                    cum magno animo aliquid factum cognoscimus? Qui igitur convenit ab alia voluptate dicere naturam
+                    proficisci, in alia summum bonum ponere? Magni enim aestimabat pecuniam non modo non contra leges,
+                    sed etiam legibus partam. Haec mirabilia videri intellego, sed cum certe superiora firma ac vera
+                    sint, his autem ea consentanea et consequentia, ne de horum quidem est veritate dubitandum. At,
+                    illa, ut vobis placet, partem quandam tuetur, reliquam deserit. Sed utrum hortandus es nobis, Luci,
+                    inquit, an etiam tua sponte propensus es? Sed est forma eius disciplinae, sicut fere ceterarum,
+                    triplex: una pars est naturae, disserendi altera, vivendi tertia. Nemo enim est, qui aliter dixerit
+                    quin omnium naturarum simile esset id, ad quod omnia referrentur, quod est ultimum rerum
+                    appetendarum. Quid est, quod ab ea absolvi et perfici debeat? Quod cum accidisset ut alter alterum
+                    necopinato videremus, surrexit statim. Tantum dico, magis fuisse vestrum agere Epicuri diem natalem,
+                    quam illius testamento cavere ut ageretur. Quod iam a me expectare noli. Quod totum contra est.
+                    Semper enim ita adsumit aliquid, ut ea, quae prima dederit, non deserat. </p>
+
+                <span>Sed nimis multa.</span>
+
+                <p>Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Negat enim summo bono afferre
+                    incrementum diem. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Deinde prima illa,
+                    quae in congressu solemus: Quid tu, inquit, huc? Minime vero probatur huic disciplinae, de qua
+                    loquor, aut iustitiam aut amicitiam propter utilitates adscisci aut probari. Nulla profecto est,
+                    quin suam vim retineat a primo ad extremum. Sed ad illum redeo. Quem quidem vos, cum improbis poenam
+                    proponitis, inpetibilem facitis, cum sapientem semper boni plus habere vultis, tolerabilem. Huic
+                    ego, si negaret quicquam interesse ad beate vivendum quali uteretur victu, concederem, laudarem
+                    etiam; Non igitur de improbo, sed de callido improbo quaerimus, qualis Q. His singulis copiose
+                    responderi solet, sed quae perspicua sunt longa esse non debent. Quae cum ita sint, effectum est
+                    nihil esse malum, quod turpe non sit. </p>
+
+            </section>
+        </article>
+    </div>
+    <br><br><br>
+
+    <h2>Horarios de Atención</h3>
+        <section>
+            <div class="schedule-table">
+              <table>
+                <tr>
+                  <th class="day">Día</th>
+                  <th class="morning">Horario de Mañana</th>
+                  <th class="afternoon">Horario de Tarde</th>
+                </tr>
+                <tr>
+                  <td>Lunes a viernes</td>
+                  <td>8:00 AM - 12:00 PM</td>
+                  <td>1:00 PM - 5:00 PM</td>
+                </tr>
+              </table>
+            </div>
+          </section>
+<br><br><br>
+    
+    <br><br><br><br>    
+    <!--Sección Informacion sobre Stefania-->
+    <div class="profesional">
+        <div class="card">
+            <div class="card-image"></div>
+            <div class="heading">
+                <h3>Stefania Caicedo</h3>
+                <h4>Encargada de los Apoyos y las Monitorías</h4>
+                <br>
+                Apoyos y Monitorías
+                <br>
+                <p> Apoyo de sostenimiento Regular
+                    Apoyo FIC
+                    Monitorías
+                    Apoyos de Alimentación
+                    Plan de Datos
+                    Madrina: Construcción
+                    <br><br>
+                </p>
+                <div class="author">
+                    <strong>Celular:</strong> 301 266 4057
+                    <br>
+                    <br>
+                    <strong>Correo: </strong>caarroyave@sena.edu.co </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Encuesta de satisfacion binestar al aprendiz-->
+    <br><br><br>
+    <div class="encuesta">
+        <h2 class="encuestah2">¿Desea llenar la encuesta de satisfacción?</h2>
+        <button class="boton">Encuesta</button>
+    </div>
+    <br><br><br>
+    <!--Sección Footer de la Página-->
+    <footer>
+        <div class="footer-content">
+            <h3>CDITI - Bienestar al aprendíz</h3>
+            <p>Horarios de atención:
+                8:00am - 7:00pm
+                <br>
+                Ubicación: 4 piso
+                <br>
+                Linea de atención nacional: 108000651192
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2023 designed by <span>ADSO</span></p>
+        </div>
+    </footer>
+    <script src="{% static 'js/Apoyos_Sena.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style_loginn.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <title>Ingreso</title>
+</head>
+<body>
+      <div class="background"> <a href="{%url 'index' %}">
+        <div class="box">
+            <div class="arrow right"></div>
+          </div>
+        </a></div>  
+      <section class="home"> 
+      <form method="post"  action="{% url 'login' %}">
+        <div class="login">
+          <h2>Ingresar</h2>
+          <p>Usuarios area de bienestar al aprendiz</p>
+          <div class="input">
+            <input type="text" name="numero_documento" class="input1" placeholder="Número de identificación" required>
+          </div>
+          <div class="input">
+            <input type="password" name="contrasena" class="input1" placeholder="Contraseña" required>
+          </div>
+          <div class="check">
+            <div class="checkbox-wrapper-4">
+              <input class="inp-cbx" id="morning" type="checkbox">
+              <label class="cbx" for="morning"><span>
+                  <svg width="12px" height="10px">
+                  </svg></span><span>Recordarme</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+            <a href="#">Olvido su contraseña?</a>
+          </div>
+          <button class="boton" type="submit">
+              Ingresar
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+
+        </div>
+        {% csrf_token %} 
+      </form>
+      </section>
+
+      {% if error_message %}
+      <!-- Muestra el mensaje de éxito -->
+      <div id="error-message">
+          {{ error_message }}
+      </div>
+  {% endif %}
+
+  <script>
+    $(document).ready(function() {
+        var errorMessage = $('#error_message').text();
+        if (errorMessage) {
+            alert(errorMessage);  // Muestra una ventana emergente con el mensaje
+        }
+    });
+</script>
+</body>
+</html>

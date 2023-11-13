@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_registrar.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <a href="{%url 'usuarios_listar'%}">
+    <div class="box">
+        <div class="arrow right"></div>
+      </div>
+    </a>
+    <div class="contenedor">
+        <form class="form" method="post">
+            <h1>Registrar usuarios</h1>
+            <label>Tipo usuario</label> 
+                <select name="tipo_usuario" required>
+                    <option value="super_administrador">Super administrador</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="usuario_bienestar">Usuario Bienestar</option>
+                </select>
+                <label>Áreas de Bienestar:</label>
+                <select name="area_bienestar" required>
+                    <option value="N/A">No aplica</option>
+                    <option value="administracion">Administración </option>
+                    <option value="liderazgo">Liderazgo</option>
+                    <option value="psicosocial">Psicosocial</option>
+                    <option value="enfermeria">Prevención en salud</option>
+                    <option value="deportes">Deportes</option>
+                    <option value="arte_cultura">Arte y Cultura</option>
+                </select>
+                <label>Tipo de documento</label>
+            <div class="flex">
+                <select name="tipo_documento" id="bienestar" required>
+                    <option value="cedula_ciudadania">CC</option>
+                    <option value="tarjeta_identidad">TI</option>
+                    <option value="cedula_extranjeria">CE</option>
+                    <option value="permiso_proteccion">PPT</option>
+                    <option value="tributaria">NIT</option>
+                </select>
+                <label>
+                    <input required="" name="numero_documento" type="text" class="input">
+                    <span>Numero documento</span>
+                </label> 
+            </div>
+            <div class="flex">
+                <label>
+                    <input required="" name="nombres" type="text" class="input">
+                    <span>Nombres</span>
+                </label>
+                <label>
+                    <input required="" name="apellidos" type="text" class="input">
+                    <span>Apellidos</span>
+                </label>
+            </div>        
+            <label>
+                <input required="" name="celular" type="tel" class="input">
+                <span>Celular</span>
+            </label>  
+                <label>
+                    <input required="" name="correo_sena" type="email" class="input">
+                    <span>Correo sena</span>
+                </label>
+            <label>
+                <input required="" name="contraseña" type="password" class="input">
+                <span>Contraseña</span>
+            </label> 
+            <button id="registrar-button" style="display: none;">
+                Registrar
+            </button>
+            <button id="guardar-cambios-button">
+                Guardar cambios
+            </button>
+            
+            
+            {% csrf_token %}
+        </form>
+    </div>
+
+    {% if success_message %}
+    <!-- Muestra el mensaje de éxito -->
+    <div id="success-message" style="display: none;">
+        {{ success_message }}
+    </div>
+    {% endif %}
+    <script>
+        $(document).ready(function() {
+            var successMessage = $('#success-message').text();
+            if (successMessage) {
+                alert(successMessage);  // Muestra una ventana emergente con el mensaje
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            var successMessage = $('#success-message').text();
+            if (successMessage) {
+                alert(successMessage);  // Muestra una ventana emergente con el mensaje
+            }
+    
+            var editando = {% if editando %} true {% else %} false {% endif %};
+            if (editando) {
+                $('#registrar-button').hide();
+                $('#guardar-cambios-button').show();
+            } else {
+                $('#registrar-button').show();
+                $('#guardar-cambios-button').hide();
+            }
+        });
+    </script>
+</body>
+</html>

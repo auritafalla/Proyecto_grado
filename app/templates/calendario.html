@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/super-administrador.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <title>Calendario</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+                <div class="text logo-text">
+                    <span class="name" id="menu-name">{{ usuario.nombres }}</span>
+                    <span class="profession" id="menu-profession">{{ perfil_info.profesion }}</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'super_administrador' %}">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{%url 'miperfil' %}">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'usuarios_listar' %}">
+                            <i class='bx bx-group icon' ></i>
+                            <span class="text nav-text">Usuarios bienestar</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'login' %}">
+                            <i class='bx bx-log-in icon'></i>
+                            <span class="text nav-text">Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="left">
+        <div class="calendar">
+          <div class="month">
+            <i class="fas fa-angle-left prev"></i>
+            <div class="date">december 2015</div>
+            <i class="fas fa-angle-right next"></i>
+          </div>
+          <div class="weekdays">
+            <div>Dom</div>
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mie</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sab</div>
+          </div>
+          <div class="days"></div>
+          <div class="goto-today">
+            <div class="goto">
+              <input type="text" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">Go</button>
+            </div>
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="today-date">
+          <div class="event-day">mier</div>
+          <div class="event-date">12 diciembre 2022</div>
+        </div>
+        <div class="events"></div>
+        <form method="POST" action="{%url 'super_administrador'%}">
+          {% csrf_token %}
+         <div class="add-event-wrapper">
+            <div class="add-event-header">
+              <div class="title">Añadir Evento o cita</div>
+              <i class="fas fa-times close"></i>
+            </div>
+            <div class="add-event-body">
+              <div class="add-event-input">
+                <input type="text" name="nombre_evento" placeholder="Nombre del evento" class="event-name" />
+              </div>
+              <div class="add-event-input">
+                <input
+                  type="time" name="hora_inicio"
+                  placeholder="Hora de inicio"
+                  class="event-time-from"
+                />
+              </div>
+              <div class="add-event-input">
+                <input
+                  type="time" name="hora_fin"
+                  placeholder="Hora finalización"
+                  class="event-time-to"
+                />
+              </div>
+              <div class="add-event-input">
+              <input type="text" name="lugar_evento" class="event-location" placeholder="Lugar">
+              </div>
+              <div class="add-event-input">
+                <textarea class="event-description" name="observaciones" placeholder="Descripción"></textarea>
+              </div>
+          </div>
+            <div class="add-event-footer">
+              <button class="add-event-btn" type="submit">Añadir</button>
+            </div>
+        </div>
+      </form>
+      </div>
+      <button class="add-event">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+        <script src="{% static 'js/calendary.js' %}"></script>
+      </body>
+
+            {% if error_message %}
+            <!-- Muestra el mensaje de éxito -->
+            <div id="error-popup" class="popup">
+                <div class="error-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <p id="error-message-content">{{ error_message }}</p>
+                </div>
+            </div>            
+            {% else %}
+            <!-- Muestra el mensaje de error-->
+            <div id="error-popup" class="popup">
+                <div class="succes-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <p id="error-message-content">{{ succes_message }}</p>
+                </div>
+            </div>  
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+    <!--para la barra de navegacion-->
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const sidebar = document.querySelector('nav');
+        const content = document.querySelector('.content');
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            content.classList.toggle("opened");
+            content.style.marginLeft = sidebar.classList.contains("close") ? "0" : "200px";
+        });
+    </script>
+</html>

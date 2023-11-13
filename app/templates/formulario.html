@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitudes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_formulario.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <nav>
+          <input type="checkbox" id="toggle">
+          <!--Logo del sena -->
+          <div class="logo">
+              <img src="{% static 'img/icon.png' %}" alt="icon">
+          </div>
+          <!--hipervinculos-->
+          <ul class="list">
+              <li><a href="{% url 'index' %}">Inicio</a></li>
+              <li><a href="{% url 'apoyos' %}">Apoyos</a></li>
+              <li><a href="{% url 'liderazgo' %}">Liderazgo</a></li>
+              <li><a href="{% url 'arte_cultura' %}">Arte y cultura</a></li>
+              <li><a href="{% url 'psicosocial' %}">Psicosocial</a></li>
+              <li><a href="{% url 'deportes' %}">Deportes</a></li>
+              <li><a href="{% url 'enfermeria' %}">Enfermería</a></li>
+              <li><a href="{% url 'login' %}">Ingresar</a></li>
+          </ul>
+          <!--Menu hamburguesa responsive-->
+          <label for="toggle" class="icon-bars">
+              <div class="line"></div>   
+              <div class="line"></div> 
+              <div class="line"></div>          
+          </label>
+      </nav>
+      <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+          var nav = document.querySelector("nav");
+          nav.classList.toggle("abajo", window.scrollY > 0);
+        })
+      </script>
+      </header>
+
+      <div class="container">    
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Formulario de Solicitud</div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <select id="opcion" name="area_bienestar">
+                                    <option value="enfermeria">Enfermería</option>
+                                    <option value="arte_y_cultura">Arte y Cultura</option>
+                                    <option value="deportes">Deportes</option>
+                                    <option value="psicosocial">Psicosocial</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="signup-form">
+                            <div class="form-container" id="enfermeria-form">
+                                <div class="input-box">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" name="nombre_solicitante" placeholder="Nombre Completo" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-graduation-cap"></i>   
+                                    <input type="text" name="programa_formacion" placeholder="Programa de Formación" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-address-card"></i>
+                                    <input type="number" name="numero_ficha" placeholder="Número de Ficha" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="number" name="celular" placeholder="Celular" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" name="correo_sena" placeholder="Correo @Sena" required>
+                                </div>
+                                <div class="button input-box">
+                                    <input type="submit" value="Solicitar agendamiento" id="abrir-modal">
+                                </div>
+                            </div>  
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if mensaje_exito %}
+    <!-- Muestra el mensaje de éxito -->
+    <div id="mensaje_exito" style="display: none;">
+        {{ mensaje_exito }}
+    </div>
+    {% endif %}
+    {% if mensaje_error %}
+    <!-- Muestra el mensaje de éxito -->
+    <div id="mensaje_error" style="display: none;">
+        {{ mensaje_error }}
+    </div>
+    {% endif %}
+    
+
+<script>
+    $(document).ready(function() {
+        var mensaje_exito = $('#mensaje_exito').text();
+        if (mensaje_exito) {
+            alert(mensaje_exito);  // Muestra una ventana emergente con el mensaje
+        }
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var mensaje_error = $('#mensaje_error').text();
+        if (mensaje_error) {
+            alert(mensaje_exito);  // Muestra una ventana emergente con el mensaje
+        }
+    });
+</script>
+      <!--Footer-->
+  <footer>
+    <div class="footer-content">
+      <h3>CDITI - Bienestar al aprendíz</h3>
+      <p>Horarios de atención: 
+          8:00am - 7:00pm
+          <br>
+          Ubicación: 4 piso
+          <br>
+          Linea de atención nacional: 108000651192
+      </p>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2023 designed by <span>ADSO</span></p>
+    </div>
+  </footer>
+
+    <script src="{% static 'js/Formularios.s' %}"></script>
+</body>
+
+</html>

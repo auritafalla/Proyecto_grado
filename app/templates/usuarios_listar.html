@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_usuaris.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <title>Super Administrador</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+                <div class="text logo-text">
+                    <span class="name" id="menu-name">{{ usuario.nombres }}</span>
+                    <span class="profession" id="menu-profession">{{ perfil_info.profesion }}</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'super_administrador' %}">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{%url 'miperfil'%}">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'usuarios_listar' %}">
+                            <i class='bx bx-group icon' ></i>
+                            <span class="text nav-text">Usuarios bienestar</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'login' %}">
+                            <i class='bx bx-log-in icon'></i>
+                            <span class="text nav-text">Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="table">
+        <section class="table__header">
+            <h1>Usuarios del sistema</h1>
+            <a href="{%url 'registrar'%}" class="pinchi">
+                <button type="submit" class="button">
+                  <span class="button__text">Crear</span>
+                  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+                </button>
+            </a>
+            <div class="input-group">
+                <input type="search" placeholder="Buscar Usuarios">
+                <i class='bx bx-search icon'></i>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Tipo id</th>
+                        <th> Número id</th>
+                        <th> Nombres</th>
+                        <th> Apellidos</th>
+                        <th> Celular</th>
+                        <th> Correo</th>
+                        <th> Area</th>
+                        <th>Usuario</th>
+                        <th>Editar y eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.id}}</td>
+                            <td>{{ usuario.tipo_documento}}</td>
+                            <td>{{ usuario.numero_documento }}</td>
+                            <td>{{ usuario.nombres}}</td>
+                            <td>{{ usuario.apellidos}}</td>
+                            <td>{{ usuario.celular}}</td>
+                            <td>{{ usuario.correo_sena}}</td> 
+                            <td>{{ usuario.area_bienestar}}</td>
+                            <td>{{ usuario.tipo_usuario}}</td>
+                            <td class="flex">
+                                <a href="{%url 'editarUsuario' id=usuario.id %}">
+                                    <button class="btn" type="button" name="editar_usuario" data-usuario-id="{{ usuario.id}}">
+                                        <span class="button__text">Editar</span>
+                                        <span class="button__icon"><svg class="svg" viewBox="0 0 512 512">
+                                      <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg></span>
+                                  </button>
+                                 </a>                       
+                                  <button class="delete" type="button" name="eliminar_usuario" data-usuario-id="{{ usuario.id}}">
+                                    <span class="button__text">Eliminar</span>
+                                    <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line><path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line></svg></span>
+                                  </button>
+                            <td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="{% static 'js/usuarios.js' %}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const noselectButtons = document.querySelectorAll('.delete');
+            const editarButtons = document.querySelectorAll('.editar');
+    
+            noselectButtons.forEach(noselect => {
+                noselect.addEventListener('click', () => {
+                    const usuarioId = noselect.getAttribute('data-usuario-id');
+                    const confirmarEliminacion = confirm('¿Estás seguro de que deseas eliminar este usuario?');
+    
+                    if (confirmarEliminacion) {
+                        const eliminarUsuarioForm = document.createElement('form');
+                        eliminarUsuarioForm.method = 'post';
+                        eliminarUsuarioForm.action = '{% url 'usuarios_listar' %}';
+                        const csrfTokenInput = document.createElement('input');
+                        csrfTokenInput.type = 'hidden';
+                        csrfTokenInput.name = 'csrfmiddlewaretoken';
+                        csrfTokenInput.value = '{{ csrf_token }}';
+                        const usuarioIdInput = document.createElement('input');
+                        usuarioIdInput.type = 'hidden';
+                        usuarioIdInput.name = 'eliminar_usuario';
+                        usuarioIdInput.value = usuarioId;
+                        eliminarUsuarioForm.appendChild(csrfTokenInput);
+                        eliminarUsuarioForm.appendChild(usuarioIdInput);
+    
+                        document.body.appendChild(eliminarUsuarioForm);
+                        eliminarUsuarioForm.submit();
+    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Usuario Eliminado con éxito',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            allowEscapeKey: false,
+                            allowOutsideClick: false,
+                            background: '#fff',
+                        });
+                    }
+                });
+            });
+    
+            editarButtons.forEach(editar => {
+                editar.addEventListener('click', () => {
+                    const usuarioId = editar.getAttribute('data-usuario-id');
+                    window.location.href = `/registrar/${usuarioId}/editar/`; // Redirige a una URL de edición.
+                });
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

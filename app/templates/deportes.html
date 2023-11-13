@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style_deports.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+  <title>Deportes</title>
+</head>
+<body>
+<!--Header de la pagina-->
+<header>
+  <nav>
+    <input type="checkbox" id="toggle">
+    <!--Logo del sena -->
+    <div class="logo">
+        <img src="{% static 'img/icon.png' %}" alt="icon">
+    </div>
+    <!--hipervinculos-->
+    <ul class="list">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'apoyos' %}">Apoyos</a></li>
+        <li><a href="{% url 'liderazgo' %}">Liderazgo</a></li>
+        <li><a href="{% url 'arte_cultura' %}">Arte y cultura</a></li>
+        <li><a href="{% url 'psicosocial' %}">Psicosocial</a></li>
+        <li><a href="{% url 'deportes' %}" class="activate">Deportes</a></li>
+        <li><a href="{% url 'enfermeria' %}">Enfermería</a></li>
+        <li><a href="{% url 'login' %}">Ingresar</a></li>
+    </ul>
+    <!--Menu hamburguesa responsive-->
+    <label for="toggle" class="icon-bars">
+        <div class="line"></div>   
+        <div class="line"></div> 
+        <div class="line"></div>          
+    </label>
+</nav>
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var nav = document.querySelector("nav");
+      nav.classList.toggle("abajo", window.scrollY > 0);
+    })
+</script>
+</header>
+
+<!--Slider-->
+<div class="container-carousel">
+    <h1>Deportes</h1>
+    <a href="{% url 'formulario' %}">
+    <button class="inscribirse">
+        Inscribirse
+    </button>
+  </a>
+    <div class="carruseles" id="slider">
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/nav.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/img1.JPG' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/slider_1.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/slider_2.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/slider_3.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/4.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/5.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/6.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/7.jpg' %}">
+        </section>
+        <section class="slider-section">
+            <img src="{% static 'img_deportes/8.jpg' %}">
+        </section>
+    </div>
+    <div class="btn-left"><i class='bx bx-chevron-left'></i></div>
+    <div class="btn-right"><i class='bx bx-chevron-right'></i></div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+<!--Contenido-->
+
+<!--Entrenamientos-->
+<section class="campus">
+    <h2>Nuestros entrenamientos</h2>
+    <p>
+      Los entrenamientos en deportes como fútbol, baloncesto, voleibol y tenis de mesa son fundamentales para el desarrollo de habilidades físicas, técnicas y mentales. Cada uno de estos deportes ofrece beneficios específicos a quienes los practican.
+    <br>
+      fomentan valores como el compañerismo, la superación personal, el respeto y la perseverancia. Además, el entrenamiento deportivo puede proporcionar beneficios para la salud física y mental de los deportistas, promoviendo un estilo de vida activo y saludable.
+    </p>
+    <div class="row">
+      <div class="campus-col">
+        <h3>Voleibol</h3>
+        <br>
+        <img src="{%static 'img_deportes/voleibol.jpeg'%}" />
+        <div class="layer1">
+          <h3>Voleibol</h3>
+          <p>Horarios: Jueves - 12:00 am
+            <br>
+            Ubicación: Cancha de futbol 10 - Al frente del kiosco.
+          </p>
+        </div>
+      </div>
+      <div class="campus-col">
+        <h3>Futbol</h3>
+        <br>
+        <img src="{%static 'img_deportes/futbol.jpeg'%}" />
+        <div class="layer2">
+          <h3>Futbol</h3>
+          <p>Horarios: Viernes - 12:00 am
+            <br>
+            Ubicación: Cancha multifuncional - Al lado del kiosco.
+          </p>
+        </div>
+      </div>
+      <div class="campus-col">
+        <h3>Baloncesto</h3>
+        <br>
+        <img src="{%static 'img_deportes/Baloncesto.jpeg'%}" />
+        <div class="layer3">
+          <h3>Baloncesto</h3>
+          <p>Horarios: Jueves - 12:00 am
+            <br>
+            Ubicación: Cancha multifuncional - Al lado del kiosco.
+          </p>
+        </div>
+      </div>
+      <div class="campus-col">
+        <h3>Tenis Mesa</h3>
+        <br>
+        <img src="{%static 'img_deportes/tenis_mesa.jpeg'%}" />
+        <div class="layer4">
+          <h3>Tenis Mesa</h3>
+          <p>Horarios: Pendiente.
+            <br>
+            Ubicación: Pendiente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<br><br>
+  <!--Servicios-->
+  <h2>Servicios</h2>
+
+<div class ="card-content">
+  <div class="cardest">
+    <div class="cardD">
+        <img src="{%static 'img_deportes/pesa.png'%}" alt="">
+        <div class="centrar">
+            <h4>Gimnasio</h4>
+            <p>Promueve la salud cardiovascular y muscular, mejorando la resistencia y la fuerza.
+                <br>
+            </p>
+        </div>
+    </div>
+  </div>
+  <div class="cardest">
+    <div class="cardD">
+        <img src="{%static 'img_deportes/yoga.png'%}" alt="">
+        <div class="centrar">
+            <h4>Pilates</h4>
+            <p> Fortalecen los músculos estabilizadores, movilidad, mejorando la postura y reduce el riesgo de lesiones en la espalda.
+            </p>
+        </div>
+    </div>
+  </div>
+  <div class="cardest">
+    <div class="cardD">
+        <img src="{%static 'img_deportes/aerobicos.png'%}" alt="">
+        <div class="centrar">
+            <h4>Aeróbicos</h4>
+            <p>Mejora la salud cardiovascular y oxigenación, quema calorias, mejora el estado de animo y reduce el estres.
+            </p>
+        </div>
+    </div>
+  </div>
+  <div class="cardest">
+    <div class="cardD">
+        <img src="{%static 'img_deportes/saludable.png'%}" alt="">
+        <div class="centrar">
+        <h4>Asesoria en habitos saludables</h4>
+        <p>Manejo del tiempo y rutina.
+            <br>
+            Asesoria de nutrición y seguimiento.
+            <br>
+            Motivación personal.
+        </p>
+    </div>
+    </div>
+  </div>
+</div>
+
+<h2>Recreación</h2>
+<div class="card-content2">
+  <div class="cardinal">
+    <div class="cardi">
+        Prestamo de material deportivo
+        <li>Balones</li>
+        <li>Lazos</li>
+        <li>Colchonetas</li>
+    </div>
+  </div>
+  <div class="cardinal1">
+    <div class="cardi">
+        Prestamo de juegos de mesa
+        <li>Ajedrez</li>
+        <li>Yenga</li>
+        <li>Domino</li>
+    </div>
+  </div>
+  <div class="cardinal2">
+    <div class="cardi">
+        Espacios permitidos.
+        <li>Chancha multifuncional</li>
+        <li>Gimnasio</li>
+        <li>Chancha fultbol 10</li>
+    </div>
+  </div>
+</div>
+
+<h2>Horarios de Atención</h2>
+    <section>
+        <div class="schedule-table">
+          <table>
+            <tr>
+              <th class="day">Día</th>
+              <th class="morning">Horario de Mañana</th>
+              <th class="afternoon">Horario de Tarde</th>
+            </tr>
+            <tr>
+              <td>Lunes a viernes</td>
+              <td>8:00 AM - 12:00 PM</td>
+              <td>1:00 PM - 5:00 PM</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+    <!--Profesional-->
+
+<h2>Profesional en Deportes</h2>
+<div class="profesional">
+    <div class="card">
+        <div class="card-image"></div>
+        <div class="heading">
+        <h3>Juan Carlos Martínez Castaño</h3>
+        <h4>Profesional en ciencias del deporte y la recreación.</h4>
+        <br>
+            Tallersita componente deporte y recreación, 
+            <br>
+            Talleres en hábitos saludables.
+            <p>Actividad física, caminatas y clases grupales.
+                <br>
+                Entrenamiento en el gimnasio
+                <br>
+                Entrenamiento deportivo.
+                <br>
+                </p>
+            <div class="author">
+                <span class="name">Celular: 311 556 62 51</span>
+                <br>
+            <span class="name">Correo: jcmartinezc@sena.edu.co</span>
+            </div>
+        </div>
+    </div>
+</div>
+  <br><br><br><br>
+<!--Encuesta de satisfacción-->
+<div class="encuesta">
+    <h2>¿Desea llenar la encuesta de satisfacción? </h2>
+    <button class="boton"> Encuesta
+    </button>
+    </div>
+  <br><br><br><br>
+  <!--Footer-->
+  <footer>
+    <div class="footer-content">
+      <h3>CDITI - Bienestar al aprendíz</h3>
+      <p>Horarios de atención: 
+          8:00am - 7:00pm
+          <br>
+          Ubicación: 4 piso
+          <br>
+          Linea de atención nacional: 108000651192
+      </p>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2023 designed by <span>ADSO</span></p>
+    </div>
+  </footer>
+</body>
+</htm>

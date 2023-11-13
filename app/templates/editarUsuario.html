@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_registrar.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <a href="{% url 'usuarios_listar' %}">
+        <div class="box">
+            <div class="arrow right"></div>
+        </div>
+    </a>
+    <div class="contenedor">
+        <form id="form" class="form" method="post">
+            <h1>Editar Usuario</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'usuarios_listar' %}">
+            <button id="guardar-cambios-button" type="submit">
+                Guardar cambios
+            </button>
+        </a>
+        </form>
+    </div>
+    <script>
+        document.getElementById('guardar-cambios-button').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('form');
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Perfil actualizado con éxito.');
+                } else {
+                    alert('Error al actualizar el perfil.');
+                }
+            })
+            .catch(error => {
+                console.error('Error al enviar la solicitud:', error);
+            });
+        });
+    </script>
+    
+
+    {% if success_message %}
+    <!-- Muestra el mensaje de éxito -->
+    <div id="success-message" style="display: none;">
+        {{ success_message }}
+    </div>
+    {% endif %}
+    <script>
+        $(document).ready(function() {
+            var successMessage = $('#success-message').text();
+            if (successMessage) {
+                alert(successMessage);  // Muestra una ventana emergente con el mensaje
+            }
+        });
+    </script>
+
+</body>
+</html>

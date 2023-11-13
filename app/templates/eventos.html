@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/eventos.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'iconosena.png' %}" type="image/x-icon">
+    <title>Administración</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image">
+                <img id="perfil-image" src="{{ perfil_info.imagenURL }}" alt="Foto de perfil" id="menu-image">
+                <div class="text logo-text">
+                    <span class="name" id="menu-name">{{ perfil_info.nombre }}</span>
+                    <span class="profession" id="menu-profession">{{ perfil_info.profesion }}</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'super_administrador' %}">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'eventos' %}">
+                            <i class='bx bx-calendar icon'></i>
+                            <span class="text nav-text">Eventos</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{%url 'citas' %}">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text">Solicitudes</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'usuarios_listar' %}">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Usuarios bienestar</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{%url 'login'%}">
+                            <i class='bx bx-log-in icon'></i>
+                            <span class="text nav-text">Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <header class="top-header">
+            <div class="logo">
+                <img src="{% static 'logoSena.png' %}" alt="Logo de tu sitio">
+            </div>
+            <div class="icon">
+                <a href="#">
+                    <i class="bx bx-log-in"></i>
+                </a>
+            </div>
+        </header>
+        <div class="container">
+            <main>
+                <div class="agregar-evento">
+                    <h2>Agregar Evento</h2>
+                    <form method="get">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Agregar Evento</button>
+                    </form>
+                </div>
+                {% if mensaje_exito %}
+                <div class="alert alert-success">
+                    {{ mensaje_exito }}
+                </div>
+                {% endif %}
+                <div class="eventos-container">
+                    <h2>Lista de eventos agendados</h2>
+
+                    <ul class="eventos-list">
+                        {% for evento in eventos %}
+                        <li class="evento-item">
+                            <div class="evento-info">
+                                <p>ID del evento: {{ evento.id }}</p>
+                                <p>Nombre del evento: {{ evento.nombre_evento }}</p>
+                                <p>Fecha de inicio del evento: {{ evento.fecha_inicio_evento }}</p>
+                                <p>Fecha fin del evento: {{evento.fecha_fin_evento}}</p>
+                                <p>Hora de inicio: {{ evento.hora_inicio_evento }}</p>
+                                <p>Hora de finalización: {{ evento.hora_finalizacion_evento }}</p>
+                                <p>Lugar del evento: {{ evento.lugar_evento }}</p>
+                                <p>Observaciones: {{ evento.observaciones_evento }}</p>
+                            </div>
+                            <i class="fas fa-trash eliminar-icon" data-evento-id="{{ evento.id }}"></i>
+                            <i class="fas fa-edit editar-icon" data-evento-id="{{ evento.id }}"></i>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/src/js.cookie.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const eliminarIcons = document.querySelectorAll('.eliminar-icon');
+            const editarIcons = document.querySelectorAll('.editar-icon');
+
+            eliminarIcons.forEach(icon => {
+                icon.addEventListener('click', () => {
+                    const eventoId = icon.getAttribute('data-evento-id');
+                    const confirmarEliminacion = confirm('¿Estás seguro de que deseas eliminar este evento?');
+
+                    if (confirmarEliminacion) {
+                        const eliminarEventoForm = document.createElement('form');
+                        eliminarEventoForm.method = 'post';
+                        eliminarEventoForm.action = '{% url 'eventos' %}';
+                        eliminarEventoForm.innerHTML = '{% csrf_token %}' + '<input type="hidden" name="eliminar_evento" value="' + eventoId + '">';
+    
+                        document.body.appendChild(eliminarEventoForm);
+                        eliminarEventoForm.submit();
+    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Evento eliminado con éxito',
+                            showConfirmButton: false,
+                            timer: 1500, // Auto-cierre después de 1.5 segundos (ajusta el tiempo según tus preferencias)
+                            timerProgressBar: true, // Muestra una barra de progreso durante el temporizador
+                            allowEscapeKey: false, // Impide que el usuario cierre la alerta con la tecla Esc
+                            allowOutsideClick: false, // Impide que el usuario cierre la alerta haciendo clic fuera de ella
+                            background: '#fff', // Cambia el fondo de la alerta (ajústalo según tu estilo)
+                        });
+                    }
+                });
+            });
+
+            editarIcons.forEach(icon => {
+                icon.addEventListener('click', () => {
+                    const eventoId = icon.getAttribute('data-evento-id');
+                    window.location.href = `/editar_eventos/${eventoId}/`;
+                });
+            });
+        });
+    </script>
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const sidebar = document.querySelector('nav');
+        const content = document.querySelector('.content');
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            content.classList.toggle("opened");
+            content.style.marginLeft = sidebar.classList.contains("close") ? "0" : "200px";
+        });
+    </script>
+</body>
+</html>
+
+
+                        

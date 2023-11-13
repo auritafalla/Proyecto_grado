@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_registra.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="contenedor">
+        <form class="form" method="post">
+            <h1>Registrar usuarios bienestar</h1>
+            <label>Áreas de Bienestar:</label>
+            <select name="area_bienestar" id="bienestar">
+                <option value="N/A">No aplica</option>
+                <option value="administracion">Administración </option>
+                <option value="liderazgo">Liderazgo</option>
+                <option value="psicosocial">Psicosocial</option>
+                <option value="enfermeria">Prevención en salud</option>
+                <option value="deportes">Deportes</option>
+                <option value="arte_cultuta">Arte y Cultura</option>
+            </select>
+            <label>Tipo de documento</label>
+            <select name="tipo_documento" id="bienestar">
+                <option value="Espiritual">CC</option>
+                <option value="Fisico">TI</option>
+                <option value="Emocional">NIP</option>
+                <option value="Social">CE</option>
+                <option value="Intelectual">PPT</option>
+                <option value="Espiritual">NIT</option>
+            </select>
+            <label>
+                <input required="" name="numero_documento" type="text" class="input">
+                <span>Numero de identificación</span>
+            </label> 
+            <div class="flex">
+                <label>
+                    <input required="" name="nombres" type="text" class="input">
+                    <span>Nombres</span>
+                </label>
+                <label>
+                    <input required="" name="apellidos" type="text" class="input">
+                    <span>Apellidos</span>
+                </label>
+            </div>        
+            <label>
+                <input required="" name="celular" type="tel" class="input">
+                <span>Celular</span>
+            </label>  
+                <label>
+                    <input required="@sena.edu.com" name="correo_sena" type="email" class="input">
+                    <span>Correo sena</span>
+                </label>
+            <label>
+                <input required="" name="contraseña" type="password" class="input">
+                <span>Contraseña</span>
+            </label> 
+
+            <button>
+                Registrar
+            </button>
+            {% csrf_token %}
+        </form>
+    </div>
+</body>
+</html>

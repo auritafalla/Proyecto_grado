@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/miperfil1.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <title>Super Administrador</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+                <div class="text logo-text">
+                    <span class="name" id="menu-name">{{ usuario.nombres }}</span>
+                    <span class="profession" id="menu-profession">{{ perfil_info.profesion }}</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'super_administrador' %}">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{%url 'miperfil' %}">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Mi Perfil</span>
+                        </a>
+                    </li>
+                   
+                    <li class="nav-link">
+                        <a href="{%url 'citas'%}">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text">Solicitudes</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'usuarios_listar' %}">
+                            <i class='bx bx-group icon' ></i>
+                            <span class="text nav-text">Usuarios bienestar</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'login/<int:id_usuario>' %}">
+                            <i class='bx bx-log-in icon'></i>
+                            <span class="text nav-text">Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="forms">
+            <div class="form-content">
+              <div class="login-form">
+                <div class="title">Actualizar contraseña</div>
+              <form id="password-form" method="post">
+                <div class="input-boxes">
+                    <label for="oldPassword">
+                    <div class="input-box">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="oldPassword" name="contrasena" placeholder="Ingrese su antigua contraseña" required>
+                        <i class="far fa-eye show-password" data-input="oldPassword" onclick="togglePassword('oldPassword')"></i>
+                      </div>
+                    </label>
+                  <label for="newPassword">
+                  <div class="input-box">
+                    <i class="fas fa-lock" ></i>
+                    <input type="password" name="nueva_contraseña" id="newPassword" placeholder="Ingrese su nueva contraseña" required>
+                    <i class="far fa-eye show-password" data-input="newPassword" onclick="togglePassword('newPassword')"></i>
+                  </div>
+                </label>
+                <label for="confirmPassword">
+                  <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirmacion" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                    <i class="far fa-eye show-password" data-input="confirmPassword" onclick="togglePassword('confirmPassword')"></i>
+                  </div>
+                </label>
+                  <div>
+                    <button type="submit">Actualizar</button>
+                  </div>
+                  {% csrf_token %}
+            </form>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+                {% if error_message %}
+                <!-- Muestra el mensaje de éxito -->
+                <div id="error-popup" class="popup">
+                    <div class="error-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <p id="error-message-content">{{ error_message }}</p>
+                    </div>
+                </div>            
+                {% else %}
+                <!-- Muestra el mensaje de error-->
+                <div id="error-popup" class="popup">
+                    <div class="succes-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <p id="error-message-content">{{ succes_message }}</p>
+                    </div>
+                </div>  
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!--para la barra de navegacion-->
+        <script>
+            const toggle = document.querySelector(".toggle");
+            const sidebar = document.querySelector('nav');
+            const content = document.querySelector('.content');
+
+            toggle.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+                content.classList.toggle("opened");
+                content.style.marginLeft = sidebar.classList.contains("close") ? "0" : "200px";
+            });
+        </script>
+
+
+    <!--Mis scripts-->
+    <script>
+        $(document).ready(function() {
+            var errorMessage = $('#error_message').text();
+            if (errorMessage) {
+                alert(errorMessage);  // Muestra una ventana emergente con el mensaje
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {3
+            var message = $('#success_message').text();
+            if (message) {
+                alert(message);  // Muestra una ventana emergente con el mensaje
+            }
+        });
+    </script>
+    <script>
+            // Función para mostrar/ocultar la contraseña
+            function togglePassword(inputId) {
+                var passwordInput = document.getElementById(inputId);
+                var eyeIcon = document.querySelector("[data-input='" + inputId + "']");
+        
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    eyeIcon.classList.remove("fa-eye");
+                    eyeIcon.classList.add("fa-eye-slash");
+                } else {
+                    passwordInput.type = "password";
+                    eyeIcon.classList.remove("fa-eye-slash");
+                    eyeIcon.classList.add("fa-eye");
+                }
+            }
+            
+    </script>
+
+
+    <script>
+        function openPopup() {
+            var popup = document.getElementById("error-popup");
+            popup.style.display = "block";
+        }
+        
+        function closePopup() {
+            var popup = document.getElementById("error-popup");
+            popup.style.display = "none";
+        }
+        
+        // Lógica para mostrar la ventana emergente si hay un mensaje de error
+        var errorMessage = document.getElementById("error-message-content").textContent;
+        
+        if (errorMessage) {
+            openPopup();
+        }
+        
+    </script>
+
+    <div class="profile-details">
+        <h2>Mis datos personales</h2>
+        <div id="perfil-datos">
+            <p><strong>Nombres:</strong> <span id="input-nombres">{{ usuario_logeado.nombres }}</span></p>
+            <p><strong>Apellidos:</strong> <span id="input-apellidos">{{ usuario_logeado.apellidos }}</span></p>
+            <p><strong>Tipo de documento:</strong> <span id="input-tipo_documento">{{ usuario_logeado.tipo_documento }}</span></p>
+            <p><strong>Número de documento:</strong> <span id="input-numero_documento">{{ usuario_logeado.numero_documento }}</span></p>
+            <p><strong>Número de celular:</strong> <span id="input-celular">{{ usuario_logeado.celular }}</span></p>
+            <p><strong>Correo Soy Sena:</strong> <span id="input-correo_sena">{{ usuario_logeado.correo_sena }}</span></p>
+        </div>
+        <button id="editar-boton">Actualizar datos</button>
+        <div id="formulario-edicion" style="display: none;" class="formulario-edicion">
+            <form id="perfil-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombres">Nombres:</label>
+                    <input type="text" id="nombres" name="nombres" value=" {{ form.nombres }}">
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" value=" {{ form.apellidos}}">
+                </div>
+                <div class="form-group">
+                    <label for="tipo_documento">Tipo de documento:</label>
+                    <select name="tipo_documento" id="tipo_documento" required value="{{ form.tipo_documento }}">
+                        <option value="cedula_ciudadania">CC</option>
+                        <option value="tarjeta_identidad">TI</option>
+                        <option value="cedula_extranjeria">CE</option>
+                        <option value="permiso_proteccion">PPT</option>
+                        <option value="tributaria">NIT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numero_documento">Número de documento:</label>
+                    <input type="text" id="numero_documento" name="numero_documento" value="{{ form.numero_documento }}">
+                </div>
+                <div class="form-group">
+                    <label for="celular">Número de celular:</label>
+                    <input type="text" id="celular" name="celular" value="{{ form.celular }}">
+                </div>
+                <div class="form-group">
+                    <label for="correo_sena">Correo Soy Sena:</label>
+                    <input type="email" id="correo_sena" name="correo_sena" value="{{ form.correo_sena }}">
+                </div>
+                <button type="button" id="cancelar-edicion">Volver</button>
+                <button type="button" id="guardar-cambios">Guardar</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    <script>
+        // Manejar el clic en el botón "Actualizar datos"
+            const editarBoton = document.getElementById('editar-boton');
+            const formularioEdicion = document.getElementById('formulario-edicion');
+            const cancelarEdicion = document.getElementById('cancelar-edicion');
+            const guardarCambios = document.getElementById('guardar-cambios');
+            const menuImage = document.getElementById('menu-image');
+            const menuName = document.getElementById('menu-name');
+            const menuProfession = document.getElementById('menu-profession');
+
+            editarBoton.addEventListener('click', () => {
+                editarBoton.style.display = 'none';
+
+                // Ocultar los datos del perfil y mostrar el formulario de edición
+                document.getElementById('perfil-datos').style.display = 'none';
+                formularioEdicion.style.display = 'block';
+            });
+
+            cancelarEdicion.addEventListener('click', () => {
+                // Ocultar el formulario de edición y mostrar los datos del perfil
+                formularioEdicion.style.display = 'none';
+                document.getElementById('perfil-datos').style.display = 'block';
+                editarBoton.style.display = 'block';
+            });
+
+            guardarCambios.addEventListener('click', () => {
+                const form = document.getElementById('perfil-form');
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                })
+                
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Perfil actualizado con éxito.');
+
+                        // Actualiza la imagen en el menú lateral
+                        const perfilImage = document.querySelector('.profile-image');
+                        menuImage.innerHTML = perfilImage.outerHTML;
+
+                        // Actualiza el nombre en el menú lateral
+                        const nombres = document.getElementById('nombres').value;
+                        const apellidos = document.getElementById('apellidos').value;
+                        menuName.textContent = nombres + ' ' + apellidos;
+
+                        // Actualiza la profesión en el menú lateral
+                        const profesion = document.getElementById('profesion').value;
+                        menuProfession.textContent = profesion;
+                    } else {
+                        alert('Error al actualizar el perfil.');
+                    }
+                });
+
+                // Después de guardar los cambios con éxito
+                if (data.success) {
+                // Muestra el mensaje de actualización con éxito
+                const mensajeActualizacion = document.getElementById('mensaje-actualizacion');
+                mensajeActualizacion.innerHTML = 'Perfil actualizado con éxito.';
+                mensajeActualizacion.style.display = 'block';
+
+                
+
+                // Realiza una solicitud AJAX para obtener la última información
+                fetch("{% url 'miperfil' %}", {
+                    method: 'GET', // Puedes usar 'GET' para obtener la última información
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest', // Para indicar una solicitud AJAX
+                    }
+                })
+                    .then(response => response.json())
+                    .then(nuevaInformacion => {
+                        // Actualiza los elementos en la página con la nueva información
+                        const perfilImage = document.querySelector('.profile-image');
+                        perfilImage.src = nuevaInformacion.foto;
+                        
+                        const nombres = document.getElementById('input-nombres');
+                        nombres.textContent = nuevaInformacion.nombres;
+                        
+                        const apellidos = document.getElementById('input-apellidos');
+                        apellidos.textContent = nuevaInformacion.apellidos;
+                        
+                        // Actualiza otros elementos de la misma manera
+
+                        // Oculta el mensaje de actualización después de un tiempo
+                        setTimeout(() => {
+                            mensajeActualizacion.style.display = 'none';
+                        }, 5000); // El mensaje se ocultará después de 5 segundos (puedes ajustar este valor)
+                    });
+
+            } else {
+                // Maneja el caso de error al actualizar el perfil
+                alert('Error al actualizar el perfil.');
+            }
+
+                
+
+                // Muestra los datos del perfil y oculta el formulario de edición
+                document.getElementById('perfil-datos').style.display = 'block';
+                formularioEdicion.style.display = 'none';
+                editarBoton.style.display = 'block';
+            });
+
+
+    </script>
+
+    <!-- En tu template 'miperfil.html' -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#perfil-form').submit(function(event) {
+                event.preventDefault();
+                var form = $(this);
+                var formData = new FormData(form[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        if (data.success) {
+                            // Redirige a la página del perfil
+                            window.location.href = data.redirect_url;
+                            
+                            // Actualiza la foto del perfil
+                            $('#profile-image').attr('src', data.new_image_url);
+                        } else {
+                            // Maneja el caso de error si es necesario
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        const body = document.querySelector('body');
+        const toggle = document.querySelector(".toggle");
+        const sidebar = document.querySelector('nav');
+        const content = document.querySelector('.content');
+        const searchBtn = document.querySelector(".search-box");
+    
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            content.classList.toggle("opened");
+    
+            if (sidebar.classList.contains("close")) {
+                content.style.marginLeft = "0"; // Barra cerrada, el contenido vuelve a la posición inicial.
+            } else {
+                content.style.marginLeft = "200px"; // Barra abierta, ajusta el valor según el ancho de la barra.
+            }
+        });
+    
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+            content.classList.toggle("opened");
+            content.style.marginLeft = "300px"; // Ajusta el valor según el ancho de la barra abierta.
+        });
+    </script>
+</body>
+</html>

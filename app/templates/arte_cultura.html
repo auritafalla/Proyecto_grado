@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style_musica.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+  <title>Arte y Cultura</title>
+</head>
+<body>
+<!--Header de la pagina-->
+<header>
+  <nav>
+    <input type="checkbox" id="toggle">
+    <!--Logo del sena -->
+    <div class="logo">
+        <img src="{% static 'img/icon.png' %}" alt="icon">
+    </div>
+    <!--hipervinculos-->
+    <ul class="list">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'apoyos' %}">Apoyos</a></li>
+        <li><a href="{% url 'liderazgo' %}">Liderazgo</a></li>
+        <li><a href="{% url 'arte_cultura' %}" class="activate">Arte y cultura</a></li>
+        <li><a href="{% url 'psicosocial' %}">Psicosocial</a></li>
+        <li><a href="{% url 'deportes' %}">Deportes</a></li>
+        <li><a href="{% url 'enfermeria' %}">Enfermería</a></li>
+        <li><a href="{% url 'login' %}">Ingresar</a></li>
+    </ul>
+    <!--Menu hamburguesa responsive-->
+    <label for="toggle" class="icon-bars">
+        <div class="line"></div>   
+        <div class="line"></div> 
+        <div class="line"></div>          
+    </label>
+</nav>
+<script type="text/javascript">
+  window.addEventListener("scroll", function () {
+    var nav = document.querySelector("nav");
+    nav.classList.toggle("abajo", window.scrollY > 0);
+  })
+</script>
+</header>
+
+<!--Contenido-->
+<seccion class="seccion">
+  <div class="seccion-content">
+      <div class="text-content">
+          <h1>Arte y cultura</h1>
+          <br><br>
+          <a href="{% url 'formulario' %}" class="btn">Solicitud</a> 
+      </div>
+  </div>
+</seccion>
+<h2>¿Qué generos se enseñan en el Centro?</h2>
+<br>
+<div class="flex-wrapper">
+  <section class="containe">
+    <div class="cards">
+      <div class="contento">
+      <h3 class="logito">Generos</h3>
+        <div class="h6">Musicales</div>
+        <br>
+        <div class="hover_content">
+          <li>Rock</li>
+          <li>Folclor</li>
+          <li>Rumba</li>
+        </div>
+      </div>
+    </div>       
+  </section>
+  <section class="containe">
+    <div class="cards">
+      <div class="contento">
+      <h3 class="logito">Generos</h3>
+        <div class="h6">Danzas</div>
+        <br>
+        <div class="hover_content">
+          <li>Salsa</li>
+          <li>Champeta</li>
+          <li>Bachata</li>
+        </div>
+      </div>
+    </div>       
+  </section>
+</div>
+<h2>Eventos de arte y cultura</h2>
+
+<div class="ful-img" id="fulImgBox">
+  <img src="imgs/1.jpg" id="fulImg" alt="">
+  <span onclick="closeImg()">X</span>
+</div>
+
+<div class="img-gallery">
+  <img src="{% static 'img_musica/1.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src=" {% static 'img_musica/2.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src=" {% static 'img_musica/3.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src=" {% static 'img_musica/4.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src="{% static 'img_musica/5.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src="{% static 'img_musica/6.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src="{% static 'img_musica/7.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+  <img src="{% static 'img_musica/4.jpeg' %}" onclick="openFulImg(this.src)" alt="">
+</div>
+<script src="{% static 'js/galeria.js' %}"></script>
+
+<!--Instrumentos-->
+<h2>Instrumentos</h2>
+<div class="content_2">
+    <div class="card_ins">
+      <div class="item item--1">
+        <span class="quantity">Teclados</span>
+        <span class="text text--1">5 puestos</span>
+      </div>
+      <div class="item item--2">
+      <span class="quantity">Guitarras</span>
+        <span class="text text--2">5 puestos</span>
+      </div>
+      <div class="item item--3">
+        <span class="quantity">Baterias</span>
+        <span class="text text--3">2 puestos</span>
+      </div>
+      <div class="item item--4">
+        <span class="quantity">Instrumentos de viento</span>
+        <span class="text text--4">5+ puestos</span>
+      </div>
+    </div>
+    <div class="img_ins">
+      <img src="{%static 'img_musica/musica_instru.jpg'%}" alt="">
+    </div>
+  </div>
+
+<div class="container">
+  <div class="content_3">
+    
+  </div>
+</div>
+
+<h2>Horarios de Atención</h2>
+    <section>
+        <div class="schedule-table">
+          <table>
+            <tr>
+              <th class="day">Día</th>
+              <th class="morning">Horario de Mañana</th>
+              <th class="afternoon">Horario de Tarde</th>
+            </tr>
+            <tr>
+              <td>Lunes a viernes</td>
+              <td>8:00 AM - 12:00 PM</td>
+              <td>1:00 PM - 5:00 PM</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    <br>
+    <br>
+<!--Profesional-->
+
+<div class="profesional">
+  <div class="card">
+      <div class="card-image"></div>
+      <div class="heading">
+      <h3> Roger Sail Marin Villaraga. </h3>
+      <h4>Licenciado en Musica. Maestro en teoria de la musica.</h4>
+      <br>
+          <br>
+          <p>Brinda espacios de clases de musica desde 0 y nivelación<br>
+            Ensayo grupos musicales<br>
+            Festival de la canción<br>
+            Talleres FormArte<br>
+            Estacion cultural y apoyo en talleres de habilidades blandas.
+            <br><br>
+              </p>
+          <div class="author">
+            <span class="name">Celular: 315 453 00 95
+          <span class="name">Correo: rmarinv@sena.edu.co
+          </span>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!--Encuesta de satisfacción-->
+<div class="encuesta">
+    <h2>¿Desea llenar la encuesta de satisfacción? </h2>
+    <button class="boton"> Encuesta
+    </button>
+    </div>
+  <br><br><br><br>
+  <!--Footer-->
+  <footer>
+    <div class="footer-content">
+      <h3>CDITI - Bienestar al aprendíz</h3>
+      <p>Horarios de atención: 
+          8:00am - 7:00pm
+          <br>
+          Ubicación: 4 piso
+          <br>
+          Linea de atención nacional: 108000651192
+      </p>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2023 designed by <span>ADSO</span></p>
+    </div>
+  </footer>
+
+</body>
+</htm>

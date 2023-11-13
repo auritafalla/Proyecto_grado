@@ -1,0 +1,637 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Calibri', sans-serif;
+}
+
+/*salir*/
+.box {
+    margin:40px;
+    width: 45px;
+    height: 45px;
+    background: #05ac05;
+    border-radius: 25px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: rotate(135deg);
+  }
+  
+  .box:hover{
+    background-color: #dbdbdb;
+    transform: scale(1.2);
+  }
+  
+
+.background{
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    background-image: url('../img_login/login.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.home{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 75%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    margin-top: 35px;
+    border: 1px solid black;
+    border-radius: 10px;
+    border: none;
+    backdrop-filter: blur(40px);
+}
+
+
+.login{
+    width: 400px;
+    position: relative;
+    padding: 60px 30px;
+    backdrop-filter: blur(20px);
+}
+
+.login h2{
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.login p{
+    color: #fff;
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+.login .input{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 40px;
+}
+
+.login .input .input1{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+::placeholder{
+    color: #fff;
+    font-size: 15px;
+}
+
+.login .input i{
+    position: relative;
+    right: -370px;
+    bottom: 27px;
+    color: #fff;
+}
+
+.check{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.check a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.check a:hover{
+    text-decoration: underline;
+}
+
+
+.checkbox-wrapper-4 * {
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  .checkbox-wrapper-4 .cbx {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  
+  .checkbox-wrapper-4 .cbx:not(:last-child) {
+    margin-right: 6px;
+  }
+  
+  .checkbox-wrapper-4 .cbx:hover {
+    background: rgba(0,119,255,0.06);
+  }
+  
+  .checkbox-wrapper-4 .cbx span {
+    float: left;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .checkbox-wrapper-4 .cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    transform: scale(1);
+    border: 1px solid #afd5af;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 1px rgba(0,16,75,0.05);
+  }
+  
+  .checkbox-wrapper-4 .cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .checkbox-wrapper-4 .cbx span:last-child {
+    padding-left: 8px;
+    line-height: 18px;
+  }
+  
+  .checkbox-wrapper-4 .cbx:hover span:first-child {
+    border-color: rgb(43, 192, 24);
+  }
+  
+  .checkbox-wrapper-4 .inp-cbx {
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
+    background: rgb(43, 192, 24);
+    border-color: rgb(43, 192, 24);
+    animation: wave-4 0.4s ease;
+  }
+  
+  .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+  
+  .checkbox-wrapper-4 .inline-svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .checkbox-wrapper-4 .cbx {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+  
+  @-moz-keyframes wave-4 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+  
+  @-webkit-keyframes wave-4 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+  
+  @-o-keyframes wave-4 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+  
+  @keyframes wave-4 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+
+
+  .boton {
+    --primary-color: #08b019;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 15px;
+    --arrow-stroke: 3px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 17px;
+    width: 100%;
+  }
+  
+  .boton a{
+    text-decoration: none;
+    color: #fff;
+
+  }
+  .boton .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .boton .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .boton .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  .boton:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .boton:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  .boton:hover .arrow:before {
+    right: 0;
+  }
+
+
+
+  /*responsive*/
+  @media screen and (max-width: 640px) {
+    .home {
+        width: 95%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .content {
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .content a {
+        font-size: 2em;
+        left: 30px;
+    }
+
+    .content h2 {
+        font-size: 2.5em;
+    }
+
+    .content h4 {
+        font-size: 0.8em;
+    }
+
+    .content .icon {
+        margin-top: 20px;
+        font-size: 1.2em;
+    }
+
+    .content .icon i {
+        margin-left: 10px;
+    }
+
+    .content .icon .social {
+        height: 40px;
+        width: 40px;
+    }
+
+    .content .icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .content .icon .social:hover {
+        background-color: aliceblue;
+    }
+
+    /* Alinea el login debajo del título "Bienestar al aprendiz" */
+    .home {
+        display: flex;
+        flex-direction: column;
+        /* Cambia la dirección de los elementos a columnas */
+        align-items: center;
+        /* Centra horizontalmente los elementos */
+    }
+
+    .login {
+        width: 100%;
+        /* Hace que el login ocupe todo el ancho disponible */
+    }
+
+    .login h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .login p {
+        font-size: 0.8em;
+        /* Reduce el tamaño de fuente para el texto del formulario */
+        margin-bottom: 15px;
+    }
+
+    .login .input {
+        margin-bottom: 15px;
+    }
+
+    .login .input .input1 {
+        font-size: 0.8em;
+        /* Reduce el tamaño de fuente para los campos de entrada */
+    }
+
+    .login .input i {
+        right: 0;
+        /* Alinea el ícono a la derecha del campo de entrada */
+        bottom: 10px;
+    }
+
+    .check {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .check a {
+        margin-top: 10px;
+    }
+
+    .checkbox-wrapper-4 .cbx {
+        margin-bottom: 10px;
+    }
+
+    /* Ajustes para hacer que el botón sea más pequeño */
+    .boton {
+        font-size: 0.8em;
+        /* Reduce el tamaño de fuente para el botón */
+        padding: 0.5em 1em;
+        /* Ajusta el relleno del botón */
+    }
+
+    .boton .arrow {
+        margin-top: 0;
+        width: 10px;
+        height: 2px;
+    }
+}
+
+/* Estilos para pantallas con resolución de 810x1080 píxeles */
+@media screen and (min-width: 641px) and (max-width: 810px) {
+
+    .background{
+      height: auto;
+    }
+    .home {
+        display: flex;
+        flex-direction: row;
+        /* Vuelve a la disposición horizontal de los elementos */
+        align-items: flex-start;
+        /* Alinea los elementos en la parte superior */
+    }
+
+    .content {
+        width: 50%;
+        /* Divide el contenido en dos columnas */
+        padding: 10px;
+    }
+
+    .content a {
+        font-size: 2.5em;
+        /* Ajusta el tamaño de fuente para el enlace */
+    }
+
+    .content h2 {
+        font-size: 3em;
+        /* Ajusta el tamaño de fuente para el encabezado */
+    }
+
+    .content h4 {
+        font-size: 1em;
+        /* Ajusta el tamaño de fuente para el subtítulo */
+    }
+
+    .login {
+        width: 50%;
+        /* Divide el formulario en dos columnas */
+        text-align: left;
+        /* Alinea el texto del formulario a la izquierda */
+        padding: 20px;
+        margin: 0;
+    }
+
+    .login h2 {
+        font-size: 2em;
+        /* Ajusta el tamaño de fuente para el encabezado del formulario */
+        margin-bottom: 10px;
+        /* Ajusta el margen inferior del encabezado del formulario */
+    }
+
+    .login p {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+        /* Ajusta el margen inferior del texto del formulario */
+    }
+
+    .login .input {
+        margin-bottom: 15px;
+        /* Ajusta el margen inferior para los campos de entrada */
+    }
+
+    .login .input .input1 {
+        font-size: 0.9em;
+        /* Ajusta el tamaño de fuente para los campos de entrada */
+    }
+
+    .login .input i {
+        right: 0;
+        /* Alinea el ícono a la derecha del campo de entrada */
+        bottom: 10px;
+    }
+
+    .check {
+        flex-direction: row;
+        /* Vuelve a la disposición horizontal de los elementos de verificación */
+        margin-bottom: 15px;
+        /* Ajusta el margen inferior */
+    }
+
+    .check a {
+        margin-top: 0;
+        /* Elimina el margen superior de los enlaces de verificación */
+        margin-right: 10px;
+        /* Agrega un margen derecho a los enlaces de verificación */
+    }
+
+    .checkbox-wrapper-4 .cbx {
+        margin-bottom: 0;
+        /* Elimina el margen inferior para las casillas de verificación */
+        margin-right: 10px;
+        /* Agrega un margen derecho a las casillas de verificación */
+    }
+
+    .boton {
+        font-size: 1em;
+        /* Vuelve al tamaño de fuente normal para el botón */
+        padding: 1em;
+        /* Ajusta el relleno del botón */
+    }
+
+    .boton .arrow {
+        width: 15px;
+        /* Ajusta el tamaño del icono de flecha en el botón */
+        height: 3px;
+        /* Ajusta el grosor de la flecha */
+    }
+}
+
+  /*footer*/
+
+  footer{
+  
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+    font-family: "Open Sans";
+    padding-top: 40px;
+    color: #fff;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+}
+.socials a i{
+    font-size: 1.1rem;
+    transition: color .4s ease;
+
+}
+.socials a:hover i{
+    color: rgb(6, 176, 0);
+}
+
+.footer-bottom{
+    background: #000;
+    width: 100vw;
+    padding: 20px 0;
+    text-align: center;
+}
+.footer-bottom p{
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+
+.footer-bottom{
+    background: #000;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}

@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style_psicosocia.css' %}" />
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon" />
+    <title>Psicosocial</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <input type="checkbox" id="toggle">
+        <!--Logo del sena -->
+        <div class="logo">
+            <img src="{% static 'img/icon.png' %}" alt="icon">
+        </div>
+        <!--hipervinculos-->
+        <ul class="list">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'apoyos' %}">Apoyos</a></li>
+            <li><a href="{% url 'liderazgo' %}">Liderazgo</a></li>
+            <li><a href="{% url 'arte_cultura' %}">Arte y cultura</a></li>
+            <li><a href="{% url 'psicosocial' %}" class="activate">Psicosocial</a></li>
+            <li><a href="{% url 'deportes' %}">Deportes</a></li>
+            <li><a href="{% url 'enfermeria' %}">Enfermería</a></li>
+            <li><a href="{% url 'login' %}">Ingresar</a></li>
+        </ul>
+        <!--Menu hamburguesa responsive-->
+        <label for="toggle" class="icon-bars">
+            <div class="line"></div>   
+            <div class="line"></div> 
+            <div class="line"></div>          
+        </label>
+    </nav>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var nav = document.querySelector("nav");
+        nav.classList.toggle("abajo", window.scrollY > 0);
+      })
+    </script>
+    </header>
+
+    <div class="background"></div>
+    <section class="home">
+      <div class="content">
+        <br /><br />
+        <h1>Psicosocial</h1>
+      </div>
+    </section>
+
+    <a href="{%url 'formulario'%}">
+    <button class="inscribirse">
+        AGENDA CITA
+    </button>
+  </a>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var nav = document.querySelector("nav");
+        nav.classList.toggle("abajo", window.scrollY > 0);
+      });
+    </script>
+
+    <br /><br />
+    <h2>Servicios</h2>
+    <section class="services">
+        <div class="Services">
+            <div class="Services-item">
+                <h3>Servicio de Psicoorientación Individual</h3>
+                <br>
+                <p>Ofrecemos servicios de psicoorientación individual para tratar diversos temas familiares, de pareja, emocionales, antecedentes en salud mental, dificultades en planeación, hábitos de estudio, dificultades económicas y más.</p>
+            </div>
+            <div class="Services-item">
+                <h3>Servicio de Psicoorientación Grupal</h3>
+                <br>
+                <p>Brindamos psicoorientación grupal para promoción y prevención de salud mental. Realizamos talleres, conversatorios y foros sobre prevención de salud mental, suicidio, consumo de sustancias y más.</p>
+            </div>
+            <div class="Services-item">
+                <h3>Servicio de Seguimiento Específico</h3>
+                <br>
+                <p>Realizamos seguimiento específico a grupos como Senasoft y WorldSkills. Ofrecemos intervenciones activas y apoyo psicológico para participantes de programas específicos.</p>
+            </div>
+            <div class="Services-item">
+                <h3>Talleres Psicoeducativos</h3>
+                <br>
+                <p>Impartimos talleres psicoeducativos en diversas áreas, incluyendo el inicio de la vida laboral, identificación de factores de riesgo en salud mental, resolución de conflictos y más.</p>
+            </div>
+            <div class="Services-item">
+                <h3>Prevención del Embarazo Adolescente</h3>
+                <br>
+                <p>Ofrecemos programas de prevención del embarazo adolescente y la identificación de riesgos comportamentales. Promovemos la salud y el bienestar de los jóvenes.</p>
+            </div>
+            <div class="Services-item">
+                <h3>Prevención del Suicidio</h3>
+                <br>
+                <p>Participamos en la prevención del suicidio mediante talleres, actividades educativas y apoyo psicológico. Promovemos la conciencia sobre este importante tema.</p>
+            </div>
+        </div>
+    </section>
+    <br><br><br>
+    <h2>Horarios de Atención</h2>
+    <section>
+        <div class="schedule-table">
+          <table>
+            <tr>
+              <th class="day">Día</th>
+              <th class="morning">Horario de Mañana</th>
+              <th class="afternoon">Horario de Tarde</th>
+            </tr>
+            <tr>
+              <td>Lunes a viernes</td>
+              <td>8:00 AM - 12:00 PM</td>
+              <td>1:00 PM - 5:00 PM</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      
+      <br><br><br>
+    <h2>Profesional en Psicologia</h2>
+      <br>
+    <div class="profesional">
+      <div class="card">
+        <div class="card-image"><img src="{%static 'img_psicosocial/Psicologia.jpg'%}" alt=""></div>
+        <div class="heading">
+        <br>
+          <h3>Monica Solarte</h3>
+          <h4>
+            Profesional en pedagogía y tecnologa en funciones comerciales.
+          </h4>
+          <br />
+          <p>
+            Además de las sesiones de psicoorientación, también ofrecemos el
+            Programa de Atención Integral (PAI), orientación psicológica
+            individual, talleres grupales en desarrollo de habilidades blandas,
+            estrategias de acompañamiento emocional (Proyecto CATARSIS), y
+            orientación en empleabilidad y vida laboral.
+            <br />
+            <br />
+            Celular: 319 581 3068
+            <br />
+            <br />
+          </p>
+
+          <div class="author">
+            <span class="name">Correo: caarroyave@sena.edu.co</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+
+    <h2>Preguntas frecuentes</h2>
+    <div class="conta">
+      <img src="{%static 'img_psicosocial/Img3.jpg'%}" alt="Imagen" class="imagen" />
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-item-header">
+            ¿Cuáles son los servicios de Psicología disponibles?
+          </div>
+          <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+              Ofrecemos sesiones de psicoorientación, que no son terapia
+              clínica. Estas sesiones pueden ser individuales o grupales y
+              cubren una variedad de temas, incluyendo familia, pareja,
+              emociones, salud mental y más.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-item-header">
+            ¿Quiénes pueden acceder a los servicios de Psicología?
+          </div>
+          <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+              Los servicios de psicología están disponibles para aprendices de
+              todas las edades matriculados en formación Laboral y Formación
+              tecnológica, de todos los niveles y jornadas, en sus diferentes
+              modalidades: presencial, virtual o a distancia.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-item-header">
+            ¿Cómo funcionan las consultas y cuánto tiempo duran?
+          </div>
+          <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+              Las consultas tienen una duración promedio de entre 40 minutos y
+              una hora, dependiendo de diversos factores. Los casos de
+              aprendices en crisis reciben atención prioritaria sin necesidad de
+              cita, siempre que sea posible dentro del horario de atención.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-item-header">
+            ¿Necesito un proceso de admisión previo para usar los servicios de
+            Psicología?
+          </div>
+          <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+              No es necesario ningún proceso de admisión previo para comenzar a
+              usar los servicios de psicología; las citas son voluntarias y
+              están disponibles para todos los aprendices.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+    <br><br><br>  
+    <!--Encuesta-->
+    <div class="encuesta">
+      <h2>¿Desea llenar la encuesta de satisfacción?</h2>
+      <br>
+      <button class="boton">Encuesta</button>
+    </div>
+    <br>
+    <br><br><br>
+    <footer>
+      <div class="footer-content">
+        <h3>CDITI - Bienestar al aprendíz</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo iste
+          corrupti doloribus odio sed!
+        </p>
+        <img src="img/" alt="" />
+      </div>
+      <div class="footer-bottom">
+        <p>copyright &copy;2023 designed by <span>ADSO</span></p>
+      </div>
+    </footer>
+  </body>
+</html>

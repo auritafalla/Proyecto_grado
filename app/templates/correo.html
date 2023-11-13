@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>mail</title>
+<body>
+    <div class="contenedorFormulario">
+
+        {% if valido %}
+        <p>Información enviada correctamente</p>
+        {% endif %}
+    
+        {% if error %}
+        <p>Error al enviar el correo</p>
+        {% endif %}
+    
+        <form action="" method="POST">
+            {% csrf_token %}
+            Fecha <input  name="Fecha"><br>
+            Hora <input  name="campoHora"><br>
+            <input type="hidden" name="destinatario" value="aquí_el_correo_predefinido"> 
+            <input type="submit" value="Enviar" style="width: 150px;">
+        </form>
+    
+    </div>
+</body>
+</html>
